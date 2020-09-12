@@ -1,10 +1,12 @@
-<script>
-	export let name;
+<script lang="ts">
+	export let name: string;
+	import Login from './components/Login/Login.svelte';
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>Iniciar session</h1>
+
+	<Login/>
 </main>
 
 <style>
@@ -16,10 +18,10 @@
 	}
 
 	h1 {
-		color: #ff3e00;
+		color: #0026ff;
 		text-transform: uppercase;
 		font-size: 4em;
-		font-weight: 100;
+		font-weight: 300;
 	}
 
 	@media (min-width: 640px) {
