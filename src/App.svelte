@@ -1,32 +1,38 @@
-<script lang="ts">
-	export let name: string;
-	import Login from './components/Login/Login.svelte';
+<script>
+  import { onMount, setContext } from "svelte";
+  import {
+    key as userContextKey,
+    initialValue as userContextInitialValue
+  } from "./userContext";
+  import Login from './components/Login/Login.svelte';
+  import Home from './components/Home.svelte';
+
+  onMount(() => {
+    setContext(userContextKey, userContextInitialValue);
+  });
+
+  var loged = false;
+  const submit = ({ email, password }) =>
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        
+		console.log(email);
+		console.log(password);
+		console.log(loged);
+		loged = true;
+		console.log(loged);
+        resolve();
+      }, 5000);
+	});
 </script>
 
 <main>
-	<h1>Iniciar session</h1>
 
-	<Login/>
+	{#if loged === true}
+		<Home/>
+	{:else}
+		<section>
+		<Login {submit}/>
+		</section>
+	{/if}
 </main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #0026ff;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 300;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
