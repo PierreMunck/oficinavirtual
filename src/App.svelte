@@ -1,17 +1,17 @@
 <script>
   import { onMount, setContext } from "svelte";
-  import {
-    key as userContextKey,
-    initialValue as userContextInitialValue
-  } from "./userContext";
+  //import {
+  //  key as userContextKey,
+  //  initialValue as userContextInitialValue
+  //} from "./userContext";
   import Login from './components/Login/Login.svelte';
   import Home from './components/Home.svelte';
 
   onMount(() => {
-    setContext(userContextKey, userContextInitialValue);
+    //setContext(userContextKey, userContextInitialValue);
   });
 
-  var loged = false;
+  export let loged = false;
   const submit = ({ email, password }) =>
     new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -23,12 +23,12 @@
 		console.log(loged);
         resolve();
       }, 5000);
-	});
+  });
 </script>
 
 <main>
 
-	{#if loged === true}
+	{#if loged == true}
 		<Home/>
 	{:else}
 		<section>

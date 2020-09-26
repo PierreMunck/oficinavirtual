@@ -3,4 +3,8 @@
 ## Technical Stack
 
 - [Node.js](https://nodejs.org)
-- [Svelte](https://svelte.dev/) / [Sapper](https://sapper.svelte.dev/)
+- [Svelte](https://svelte.dev/)
+
+## develop
+
+`npm run dev`
