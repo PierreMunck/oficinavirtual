@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Textfield from '@smui/textfield'
   import Button, {Label} from '@smui/button';
 
@@ -33,6 +33,7 @@
   };
 </script>
 
+<div class="logincontainer" >
 <h1>Iniciar session</h1>
 
 <form on:submit|preventDefault={handleSubmit}>
@@ -74,3 +75,11 @@
     </ul>
   {/if}
 </form>
+</div>
+
+<style lang="scss">
+  .logincontainer{
+    max-width: 400px;
+    margin: auto;
+  }
+</style>
