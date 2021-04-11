@@ -1,0 +1,50 @@
+version: "3.7"
+services:
+  app:
+    build: 
+      args: 
+        user: munck
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: oficinavirtualhabitat
+    container_name: oficinavirtualhabitat-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./src:/var/www
+      - ./docker/php:/usr/local/etc/php/conf.d
+    networks:
+      - oficinavirtualhabitat
+
+  db:
+    image: mysql:5.7
+    container_name: oficinavirtualhabitat-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: 'oficinavirtual'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_PASSWORD: 'BNDglv6'
+      MYSQL_USER: 'oficinavirtual'
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+      - ./docker/mysql:/etc/mysql
+    networks:
+      - oficinavirtualhabitat
+
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: oficinavirtualhabitat-nginx
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    volumes:
+      - ./src:/var/www
+      - ./docker/nginx:/etc/nginx/conf.d
+    networks:
+      - oficinavirtualhabitat
+
+networks:
+  oficinavirtualhabitat:
+    name: oficinavirtualhabitat
+    external: true

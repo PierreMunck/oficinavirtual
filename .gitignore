@@ -1,0 +1,5 @@
+/db
+/src/build
+/src/vendor
+
+.DS_Store
