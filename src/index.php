@@ -6,16 +6,19 @@ require_once __DIR__.'/model/User.php';
 require_once __DIR__.'/model/Token.php';
 use Ramsey\Uuid\Uuid;
 
+$conf_file = file_get_contents("./config.json");
+$config = json_decode($conf_file, true);
+
 $app = new Silex\Application();
 $app['debug']=true;
 
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
-        'dbname' => 'oficinavirtual',
-        'user' => 'oficinavirtual',
-        'password' => 'Rw8v$BNDglv6',
-        'host' => 'localhost',
-        'driver' => 'pdo_mysql',
+        'dbname' => $config['db']['dbname'],
+        'user' => $config['db']['user'],
+        'password' => $config['db']['password'],
+        'host' => $config['db']['host'],
+        'driver' => $config['db']['driver'],
     ),
 ));
 

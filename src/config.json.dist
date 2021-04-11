@@ -1,0 +1,9 @@
+{
+    "db" : {
+        "dbname" : "oficinavirtual",
+        "user" : "oficinavirtual",
+        "password" : "XXXX",
+        "host" : "localhost",
+        "driver" : "pdo_mysql",
+    }
+}
